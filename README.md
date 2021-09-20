@@ -1,2 +1,2 @@
-# 2DTerrainGeneration
-2D Terrain Generation 
+# Generative Art
+Generative Art
