@@ -18,15 +18,15 @@ void draw() {
   loadPixels();
   chunk.loadPixels();
   
-  for (int x = 0; x < width; x++) {
+  for (int x = 0; x < width - 1; x++) {
     
     for (int y = 0; y < height; y++) {
       
       int loc = x + y * width;
       
-      float r = red(chunk.pixels[loc]);
-      float g = green(chunk.pixels[loc]);
-      float b = blue(chunk.pixels[loc]);
+      //float r = red(chunk.pixels[loc]);
+      //float g = green(chunk.pixels[loc]);
+      //float b = blue(chunk.pixels[loc]);
       
       //pixels[loc] = chunk.pixels[loc];
       
@@ -47,7 +47,7 @@ void draw() {
         //pixels[loc] = color (r*factor, g*factor, b*factor);
       
       // MARKUP - : Brightness
-        float bright = brightness(chunk.pixels[loc]);
+        //float bright = brightness(chunk.pixels[loc]);
         //if ( bright > 200) {
         //  pixels[loc] = color(255);
         //} else if (bright <= 200 && bright >= 100) {
@@ -57,11 +57,27 @@ void draw() {
         //}
       
       // MARKUP - : Brightness based on mouse X value
-        if ( b > mouseX) {
-          pixels[loc] = color(255);
+        //if ( b > mouseX) {
+        //  pixels[loc] = color(255);
+        //} else {
+        //  pixels[loc] = color(0);
+        //}
+      
+      // MARKUP - : Pixel Neighbors
+        int loc1 = x + y * width;
+        int loc2 = ( x + 1 ) + y * width;
+        
+        float b1 = brightness(chunk.pixels[loc1]);
+        float b2 = brightness(chunk.pixels[loc2]);
+        float diff = abs(b1-b2);
+        
+        //pixels[loc1] = color(diff);
+        if (diff > 10) {
+          pixels[loc1] = color(0);
         } else {
-          pixels[loc] = color(0);
+          pixels[loc1] = color(255);
         }
+        
     } 
     
   }
