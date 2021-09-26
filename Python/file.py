@@ -19,23 +19,38 @@ inputPath = "input"
 
 size_1020 = (1020,1020)
 
-filters = {
-    "blur": ImageFilter.BLUR,
-    "contour": ImageFilter.CONTOUR,
-    "detail": ImageFilter.DETAIL,
-    "edge enhance": ImageFilter.EDGE_ENHANCE,
-    "edge enhance more": ImageFilter.EDGE_ENHANCE_MORE,
-    "emboss": ImageFilter.EMBOSS,
-    "find edges": ImageFilter.FIND_EDGES,
-    "sharpen": ImageFilter.SHARPEN,
-    "smooth": ImageFilter.SMOOTH,
-    "smooth more": ImageFilter.SMOOTH_MORE,
-    "box blur": ImageFilter.BoxBlur(10),
-    "gaussian blur": ImageFilter.GaussianBlur(25),
-    "unsharp mark": ImageFilter.UnsharpMask,
-    "rank filter": ImageFilter.RankFilter(size=3, rank=0),
-    "median": ImageFilter.MedianFilter(size=3),
-}
+
+# MARKUP - : filters
+# Rank Filter
+# Marble Filter
+# Diffuse Filter
+# Bump Filter
+# Noise Filter
+# Pointillize Filter
+# Smear Filter
+# Despeckle Filter
+# Oil Filter
+# Sharpen Filter
+# Edge Filter
+# Laplace Filter
+
+# filters = {
+#     "blur": ImageFilter.BLUR,
+#     "contour": ImageFilter.CONTOUR,
+#     "detail": ImageFilter.DETAIL,
+#     "edge enhance": ImageFilter.EDGE_ENHANCE,
+#     "edge enhance more": ImageFilter.EDGE_ENHANCE_MORE,
+#     "emboss": ImageFilter.EMBOSS,
+#     "find edges": ImageFilter.FIND_EDGES,
+#     "sharpen": ImageFilter.SHARPEN,
+#     "smooth": ImageFilter.SMOOTH,
+#     "smooth more": ImageFilter.SMOOTH_MORE,
+#     "box blur": ImageFilter.BoxBlur(10),
+#     "gaussian blur": ImageFilter.GaussianBlur(25),
+#     "unsharp mark": ImageFilter.UnsharpMask,
+#     "rank filter": ImageFilter.RankFilter(size=3, rank=0),
+#     "median": ImageFilter.MedianFilter(size=3),
+# }
 
 
 
