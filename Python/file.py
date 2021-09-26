@@ -19,7 +19,6 @@ inputPath = "input"
 
 size_1020 = (1020,1020)
 
-
 # MARKUP - : filters
 # Rank Filter
 # Marble Filter
@@ -34,23 +33,23 @@ size_1020 = (1020,1020)
 # Edge Filter
 # Laplace Filter
 
-# filters = {
-#     "blur": ImageFilter.BLUR,
-#     "contour": ImageFilter.CONTOUR,
-#     "detail": ImageFilter.DETAIL,
-#     "edge enhance": ImageFilter.EDGE_ENHANCE,
-#     "edge enhance more": ImageFilter.EDGE_ENHANCE_MORE,
-#     "emboss": ImageFilter.EMBOSS,
-#     "find edges": ImageFilter.FIND_EDGES,
-#     "sharpen": ImageFilter.SHARPEN,
-#     "smooth": ImageFilter.SMOOTH,
-#     "smooth more": ImageFilter.SMOOTH_MORE,
-#     "box blur": ImageFilter.BoxBlur(10),
-#     "gaussian blur": ImageFilter.GaussianBlur(25),
-#     "unsharp mark": ImageFilter.UnsharpMask,
-#     "rank filter": ImageFilter.RankFilter(size=3, rank=0),
-#     "median": ImageFilter.MedianFilter(size=3),
-# }
+filters = {
+    "blur": ImageFilter.BLUR,
+    "contour": ImageFilter.CONTOUR,
+    "detail": ImageFilter.DETAIL,
+    "edge enhance": ImageFilter.EDGE_ENHANCE,
+    "edge enhance more": ImageFilter.EDGE_ENHANCE_MORE,
+    "emboss": ImageFilter.EMBOSS,
+    "find edges": ImageFilter.FIND_EDGES,
+    "sharpen": ImageFilter.SHARPEN,
+    "smooth": ImageFilter.SMOOTH,
+    "smooth more": ImageFilter.SMOOTH_MORE,
+    "box blur": ImageFilter.BoxBlur(10),
+    "gaussian blur": ImageFilter.GaussianBlur(25),
+    "unsharp mark": ImageFilter.UnsharpMask,
+    "rank filter": ImageFilter.RankFilter(size=3, rank=0),
+    "median": ImageFilter.MedianFilter(size=3),
+}
 
 
 
@@ -70,16 +69,19 @@ if __name__ == "__main__":
 
             # MARKUP - : Image Processing
             
-            imProcessedRank = im.filter(ImageFilter.RankFilter(size=3, rank=8))
-            imProcessedMedian = im.filter(ImageFilter.MedianFilter(size=3))
-            imProcessedBlur = im.filter(ImageFilter.BLUR)
-            imProcessedEmboss = im.filter(ImageFilter.EMBOSS)
-            imProcessedFindEdges = im.filter(ImageFilter.FIND_EDGES)
+            imLevel1_ProcessedRank = im.filter(filters["rank filter"])
+            imLevel2_ProcessedRank = imLevel1_ProcessedRank.filter(filters["median"])
+
+            #imProcessedRank = im.filter(ImageFilter.RankFilter(size=3, rank=8))
+            #imProcessedMedian = imProcessedRank.filter(ImageFilter.MedianFilter(size=3))
+            #imProcessedBlur = imProcessedMedian.filter(ImageFilter.BLUR)
+            #imProcessedEmboss = imProcessedBlur.filter(ImageFilter.EMBOSS)
+            #imProcessedFindEdges = imProcessedBlur.filter(ImageFilter.FIND_EDGES)
 
             ####################### 
 
             # MARKUP - : save images in folders
-            imProcessedMedian.save('./output/{}_processed{}'.format(fn, fext))
+            imLevel2_ProcessedRank.save('./output/{}_processed{}'.format(fn, fext))
 
             # MARKUP - : convert to png and save in png folder
             # i.save('./output/pngs/{}.png'.format(fn))
