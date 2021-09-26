@@ -33,6 +33,8 @@ filters = {
     "box blur": ImageFilter.BoxBlur(10),
     "gaussian blur": ImageFilter.GaussianBlur(25),
     "unsharp mark": ImageFilter.UnsharpMask,
+    "rank filter": ImageFilter.RankFilter(size=3, rank=0),
+    "median": ImageFilter.MedianFilter(size=3),
 }
 
 
@@ -53,7 +55,8 @@ if __name__ == "__main__":
 
             # MARKUP - : Image Processing
             
-            imProcessed = im.filter(ImageFilter.RankFilter(size=3, rank=0))
+            imProcessedRank = im.filter(ImageFilter.RankFilter(size=3, rank=8))
+            imProcessedMedian = im.filter(ImageFilter.MedianFilter(size=3))
             imProcessedBlur = im.filter(ImageFilter.BLUR)
             imProcessedEmboss = im.filter(ImageFilter.EMBOSS)
             imProcessedFindEdges = im.filter(ImageFilter.FIND_EDGES)
@@ -61,8 +64,7 @@ if __name__ == "__main__":
             ####################### 
 
             # MARKUP - : save images in folders
-            imProcessed.save('./cache/{}{}'.format(fn, fext))
-
+            imProcessedMedian.save('./output/{}_processed{}'.format(fn, fext))
 
             # MARKUP - : convert to png and save in png folder
             # i.save('./output/pngs/{}.png'.format(fn))
