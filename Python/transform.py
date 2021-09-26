@@ -13,6 +13,7 @@ Programmer Beast Mode Spotify playlist: https://open.spotify.com/playlist/4Akns5
 from image import Image
 import numpy as np
 
+
 def brighten(image, factor):
     # when we brighten, we just want to make each channel higher by some amount 
     # factor is a value > 0, how much you want to brighten the image by (< 1 = darken, > 1 = brighten)
@@ -95,8 +96,6 @@ def combine_images(image1, image2):
     return new_im
     
 if __name__ == '__main__':
-    lake = Image(filename='lake.png')
-    city = Image(filename='city.png')
     chunk1 = Image(filename='chunk1.png')
 
     # brightening
